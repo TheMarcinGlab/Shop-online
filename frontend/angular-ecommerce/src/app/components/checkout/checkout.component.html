@@ -55,9 +55,12 @@
                         <div class="col-md-2"> <label>Email</label></div>
                         <div class="col-md-9">
                             <div class="input-space">
-                                <input formControlName="email" type="text">
+                               <!-- <input formControlName="email" type="text"> -->
 
-                                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger mt-1">
+                                <!-- Pole wyświetlające e-mail pobrany z localStorage -->
+                                <input type="text" [value]="emailFromStorage" disabled class="form-control">
+
+                                <!-- <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger mt-1">
 
                                     <div *ngIf="email.errors.required">
                                         Email is required
@@ -67,7 +70,7 @@
                                         Email must be a valid email address format
                                     </div>
 
-                                </div>
+                                </div> -->
 
                             </div>
                         </div>
@@ -407,9 +410,20 @@
                 </div>
 
                 <!-- Przycisk do wysłania formularza-->
-                <div class="text-center">
+                <!-- <div class="text-center">
+                    <button type="submit" class="btn btn-info">Purchase</button>
+                </div> -->
+
+                <div *ngIf="auth.isAuthenticated$ | async" class="text-center">
                     <button type="submit" class="btn btn-info">Purchase</button>
                 </div>
+
+                <div *ngIf="(auth.isAuthenticated$ | async) === false">
+                    <button id="qsLoginBtn" class="btn btn-primary btn-margin" (click)="loginWithRedirect()">
+                      Log in
+                    </button>
+                </div>
+                  
 
             </form>
 
