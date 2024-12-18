@@ -1,0 +1,36 @@
+version: '3.9'
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    entrypoint: ["java", "-jar", "/app/app.jar"]
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://ecommerceapp.cnquq0y04sjt.eu-north-1.rds.amazonaws.com/full-stack-ecommerce
+      - SPRING_DATASOURCE_USERNAME=ecommerceapp
+      - SPRING_DATASOURCE_PASSWORD=ecommerceapp
+    # depends_on:  # Jeśli chcesz usunąć db, usuń tę linię
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "4200:4200"
+
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: ecommerce
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./Skrypt DB.sql:/docker-entrypoint-initdb.d/SkryptDB.sql
+    ports:
+      - "3307:3306"
+
+volumes:
+  db_data:

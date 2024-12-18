@@ -21,20 +21,20 @@ export class CartDetailsComponent implements OnInit {
 
   listCartDetails() {
 
-    // get a handle to the cart items
+    // pobierz uchwyt do elementów koszyka
     this.cartItems = this.cartService.cartItems;
 
-    // subscribe to the cart totalPrice
+    // całkowita cena koszyka
     this.cartService.totalPrice.subscribe(
       data => this.totalPrice = data
     );
 
-    // subscribe to the cart totalQuantity
+    // całkowita ilość produktów w koszyku
     this.cartService.totalQuantity.subscribe( 
       data => this.totalQuantity = data
     );
 
-    // compute cart total price and quantity
+    // oblicz całkowitą cenę i ilość produktów w koszyku
     this.cartService.computeCartTotals();
   }
 

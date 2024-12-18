@@ -17,7 +17,7 @@
                         </td>
                         <td>
                             <p>{{ tempCartItem.name }}</p>
-                            <p>{{ tempCartItem.unitPrice | currency: 'USD' }}</p>
+                            <p>{{ tempCartItem.unitPrice | currency: 'PLN' }}</p>
                         </td>
                         <td>
                             <div class="items">
@@ -56,7 +56,7 @@
                         <td style="font-weight: bold">
                             <p>Total Quantity: {{ totalQuantity }}</p>
                             <p>Shipping: FREE</p>
-                            <p>Total Price: {{ totalPrice | currency: 'USD' }}</p>
+                            <p>Total Price: {{ totalPrice | currency: 'PLN' }}</p>
                             <a routerLink="/checkout" class="btn btn-primary">Checkout</a>
                         </td>
                     </tr>
@@ -65,7 +65,7 @@
 
             </div>
 
-            <!-- if cart is empty then display a message -->
+            <!-- jeżeli nie ma elementów wyświetl to -->
             <div *ngIf="cartItems.length == 0" class="alert alert-warning col-md-12" role="alert">
                 Your shopping cart is empty. 
             </div>

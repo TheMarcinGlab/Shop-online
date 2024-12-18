@@ -52,8 +52,6 @@ export class ProductListComponent implements OnInit {
 
     const theKeyword: string = this.route.snapshot.paramMap.get('keyword');
 
-    // if we have a different keyword than previous
-    // then set thePageNumber to 1
 
     if (this.previousKeyword != theKeyword) {
       this.thePageNumber = 1;
@@ -63,7 +61,7 @@ export class ProductListComponent implements OnInit {
 
     console.log(`keyword=${theKeyword}, thePageNumber=${this.thePageNumber}`);
 
-    // now search for the products using keyword
+    // wyszukaj produkt po słowach klucz
     this.productService.searchProductsPaginate(this.thePageNumber - 1,
                                                this.thePageSize,
                                                theKeyword).subscribe(this.processResult());
@@ -72,25 +70,19 @@ export class ProductListComponent implements OnInit {
 
   handleListProducts() {
 
-    // check if "id" parameter is available
+    
     const hasCategoryId: boolean = this.route.snapshot.paramMap.has('id');
 
     if (hasCategoryId) {
-      // get the "id" param string. convert string to a number using the "+" symbol
+      
       this.currentCategoryId = +this.route.snapshot.paramMap.get('id');
     }
     else {
-      // not category id available ... default to category id 1
+     //jeżeli nie ma takiej kategori domyślna = 1
       this.currentCategoryId = 1;
     }
 
-    //
-    // Check if we have a different category than previous
-    // Note: Angular will reuse a component if it is currently being viewed
-    //
-
-    // if we have a different category id than previous
-    // then set thePageNumber back to 1
+   
     if (this.previousCategoryId != this.currentCategoryId) {
       this.thePageNumber = 1;
     }
@@ -99,7 +91,6 @@ export class ProductListComponent implements OnInit {
 
     console.log(`currentCategoryId=${this.currentCategoryId}, thePageNumber=${this.thePageNumber}`);
 
-    // now get the products for the given category id
     this.productService.getProductListPaginate(this.thePageNumber - 1,
                                                this.thePageSize,
                                                this.currentCategoryId)
@@ -125,7 +116,7 @@ export class ProductListComponent implements OnInit {
     
     console.log(`Adding to cart: ${theProduct.name}, ${theProduct.unitPrice}`);
 
-    // TODO ... do the real work
+
     const theCartItem = new CartItem(theProduct);
 
     this.cartService.addToCart(theCartItem);

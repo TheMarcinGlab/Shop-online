@@ -1,6 +1,3 @@
--- -----------------------------------------------------
--- Table `full-stack-ecommerce`.`product_category`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS product_category (
   `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
   `category_name` VARCHAR(255) NULL DEFAULT NULL,
@@ -8,9 +5,7 @@ CREATE TABLE IF NOT EXISTS product_category (
 ENGINE=InnoDB
 AUTO_INCREMENT = 1;
 
--- -----------------------------------------------------
--- Table `full-stack-ecommerce`.`product`
--- -----------------------------------------------------
+
 CREATE TABLE IF NOT EXISTS product (
   `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
   `sku` VARCHAR(255) DEFAULT NULL,
@@ -37,9 +32,6 @@ INSERT INTO product_category(ID, CATEGORY_NAME) VALUES (3, 'MOUSEPAD');
 INSERT INTO product_category(ID, CATEGORY_NAME) VALUES (4, 'LUGGAGETAG');
 
 
--- -----------------------------------------------------
--- Add sample data
--- -----------------------------------------------------
 INSERT INTO product (id, sku, name, description, image_url, active, units_in_stock, unit_price, category_id, date_created) VALUES (1, 'BOOK-TECH-1000', 'Crash Course in Python', 'Learn Python at your own pace. The author explains how the technology works in easy-to-understand language. This book includes working examples that you can apply to your own projects. Purchase the book and get started today!', 'assets/images/products/books/book-theglab-1000.png', 1, 100, 14.99, 1, NOW());
 INSERT INTO product (id, sku, name, description, image_url, active, units_in_stock, unit_price, category_id, date_created) VALUES (2, 'BOOK-TECH-1001', 'Become a Guru in JavaScript', 'Learn JavaScript at your own pace. The author explains how the technology works in easy-to-understand language. This book includes working examples that you can apply to your own projects. Purchase the book and get started today!', 'assets/images/products/books/book-theglab-1001.png', 1, 100, 20.99, 1, NOW());
 INSERT INTO product (id, sku, name, description, image_url, active, units_in_stock, unit_price, category_id, date_created) VALUES (3, 'BOOK-TECH-1002', 'Exploring Vue.js', 'Learn Vue.js at your own pace. The author explains how the technology works in easy-to-understand language. This book includes working examples that you can apply to your own projects. Purchase the book and get started today!', 'assets/images/products/books/book-theglab-1002.png', 1, 100, 14.99, 1, NOW());
@@ -156,10 +148,6 @@ CREATE TABLE `country` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
 
---
--- Data for table `country`
---
-
 INSERT INTO `country` VALUES 
 (1,'BR','Brazil'),
 (2,'CA','Canada'),
@@ -169,9 +157,6 @@ INSERT INTO `country` VALUES
 (6,'US','United States'),
 (7,'PL','Poland');
 
---
--- Table structure for table `state`
---
 
 
 CREATE TABLE `state` (
@@ -183,9 +168,6 @@ CREATE TABLE `state` (
   CONSTRAINT `fk_country` FOREIGN KEY (`country_id`) REFERENCES `country` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1;
 
---
--- Dumping data for table `state`
---
 
 INSERT INTO `state` VALUES 
 (1,'Acre',1),
@@ -442,9 +424,7 @@ CREATE TABLE `address` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Table structure for table `customer`
---
+
 CREATE TABLE `customer` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `first_name` varchar(255) DEFAULT NULL,
@@ -455,9 +435,6 @@ CREATE TABLE `customer` (
 
 
 
---
--- Table structure for table `orders`
---
 CREATE TABLE `orders` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `order_tracking_number` varchar(255) DEFAULT NULL,
@@ -478,9 +455,7 @@ CREATE TABLE `orders` (
   CONSTRAINT `FK_shipping_address_id` FOREIGN KEY (`shipping_address_id`) REFERENCES `address` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Table structure for table `order_items`
---
+
 CREATE TABLE `order_item` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `image_url` varchar(255) DEFAULT NULL,

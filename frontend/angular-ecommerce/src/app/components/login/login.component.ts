@@ -14,6 +14,7 @@ export class LoginComponent {
   constructor(private fb: FormBuilder, private authService : AuthService, private router: Router) {}
 
   ngOnInit(): void {
+    // Inicjalizacja formularza logowania z walidacją dla nazwy użytkownika i hasła
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
@@ -25,12 +26,12 @@ export class LoginComponent {
       const username = this.loginForm.get('username').value;
       const password = this.loginForm.get('password').value;
 
-       // Call the authentication service's login method
-       if (this.authService.login(username, password)) {
-        // Navigate to the ProductListComponent upon successful login
+      // Wywołanie metody logowania z serwisu uwierzytelniającego
+      if (this.authService.login(username, password)) {
+        // Nawigacja do komponentu ProductListComponent po pomyślnym zalogowaniu
         this.router.navigate(['/product-list']);
       } else {
-        // Handle authentication error (show error message, etc.)
+        // Obsługa błędu uwierzytelnienia (np. wyświetlenie komunikatu o błędzie)
       }
 
     }

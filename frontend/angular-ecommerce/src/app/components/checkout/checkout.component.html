@@ -4,7 +4,7 @@
 
             <form [formGroup]="checkoutFormGroup" (ngSubmit)="onSubmit()">
 
-                <!-- customer form group -->
+                <!-- formularz dostawy dla usera -->
                 <div formGroupName="customer" class="form-area">
                     <h3>Customer</h3>
 
@@ -75,7 +75,7 @@
 
                 </div>
 
-                <!-- shipping Address -->
+                <!-- adres dostawy -->
                 <div formGroupName="shippingAddress" class="form-area">
                     <h3>Shipping Address</h3>
 
@@ -178,7 +178,7 @@
 
                 </div>
 
-                <!-- Add check box to copy shipping to billing -->
+                <!-- skopiuj co wyżej -->
                 <div class="input-space">
                     <label class="au-checkbox">
                         <input type="checkbox" (change)="copyShippingAddressToBillingAddress($event)">
@@ -187,7 +187,7 @@
                 </div>
 
 
-                <!-- Billing Address -->
+           
                 <div formGroupName="billingAddress" class="form-area">
                     <h3>Billing Address</h3>
 
@@ -291,7 +291,7 @@
 
                 </div>
 
-                <!-- Credit Card -->
+                <!-- Dane karty -->
                 <div formGroupName="creditCard" class="form-area">
                     <h3>Credit Card</h3>
 
@@ -397,7 +397,7 @@
 
                 </div>
 
-                <!-- Order details -->
+                <!-- Szczegóły zamówienia -->
                 <div class="form-area">
                     <h3>Review Your Order</h3>
 
@@ -406,7 +406,7 @@
                     <p>Total Price: {{ totalPrice | currency: 'USD' }}</p>
                 </div>
 
-                <!-- submit button-->
+                <!-- Przycisk do wysłania formularza-->
                 <div class="text-center">
                     <button type="submit" class="btn btn-info">Purchase</button>
                 </div>

@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class LoginStatusComponent {
 
-  user$ = this.auth.user$; // Observable z danymi użytkownika
+  user$ = this.auth.user$; // Dane logowania
   storage: Storage = sessionStorage;
 
   constructor(
